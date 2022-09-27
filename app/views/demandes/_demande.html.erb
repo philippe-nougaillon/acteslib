@@ -1,0 +1,42 @@
+<div id="<%= dom_id demande %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Type document:</strong>
+    <%= demande.type_document %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Nom:</strong>
+    <%= demande.nom %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Prénom:</strong>
+    <%= demande.prénom %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Date naissance:</strong>
+    <%= demande.date_naissance %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Lieu naissance:</strong>
+    <%= demande.lieu_naissance %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Disctrict:</strong>
+    <%= demande.disctrict %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Workflow state:</strong>
+    <%= demande.workflow_state %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this demande", demande, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this demande', edit_demande_path(demande), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

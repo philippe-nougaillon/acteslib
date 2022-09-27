@@ -13,6 +13,12 @@
 
   <body>
     <main class="container mx-auto mt-28 px-5 flex">
+      <%= link_to "Déconnexion", 
+                  destroy_user_session_path, 
+                  method: :delete, 
+                  class: "button is-danger is-outlined is-small",
+                  data: { turbo_method: :delete }
+              %>
       <%= yield %>
     </main>
   </body>

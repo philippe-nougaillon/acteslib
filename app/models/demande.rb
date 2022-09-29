@@ -10,6 +10,8 @@ class Demande < ApplicationRecord
 
   validates :type_document, :nom, :prénom, :date_naissance, :lieu_naissance, :district, :workflow_state, presence: true
 
+  paginates_per 20
+
   # scope :publié, -> { where(workflow_state: PUBLIE )}
 
   # WORKFLOW

@@ -75,3 +75,5 @@ gem 'workflow-activerecord'
 
 # ORM agnostic truly Object-Oriented view helper for Rails 4, 5, and 6
 gem "active_decorator", "~> 1.4"
+
+gem 'kaminari'

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr" data-theme="light">
   <head>
     <title>Acteslib</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -13,13 +13,15 @@
 
   <body>
     <main class="container mx-auto mt-28 px-5 flex">
-      <%= link_to "Déconnexion", 
-                  destroy_user_session_path, 
-                  method: :delete, 
-                  class: "button is-danger is-outlined is-small",
-                  data: { turbo_method: :delete }
-              %>
-      <%= yield %>
+      <% if user_signed_in? %>
+        <%= link_to "Déconnexion", 
+                    destroy_user_session_path, 
+                    method: :delete, 
+                    class: "button is-danger is-outlined is-small",
+                    data: { turbo_method: :delete }
+                %>
+      <% end %>
+        <%= yield %>
     </main>
   </body>
 </html>

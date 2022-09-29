@@ -3,7 +3,19 @@ class DemandesController < ApplicationController
 
   # GET /demandes or /demandes.json
   def index
-    @demandes = Demande.all
+    case current_user.role
+    when "demandeur"
+      @demandes = current_user.demandes
+
+    when "utilisateur"
+      @demandes = Demande.all
+
+    when "institution"
+      @demandes = Demande.all
+
+    when "administrateur"
+      @demandes = Demande.all
+    end
   end
 
   # GET /demandes/1 or /demandes/1.json
@@ -22,10 +34,11 @@ class DemandesController < ApplicationController
   # POST /demandes or /demandes.json
   def create
     @demande = Demande.new(demande_params)
+    @demande.user = current_user
 
     respond_to do |format|
       if @demande.save
-        format.html { redirect_to demande_url(@demande), notice: "Demande was successfully created." }
+        format.html { redirect_to demande_url(@demande), notice: "Demande créée." }
         format.json { render :show, status: :created, location: @demande }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +51,7 @@ class DemandesController < ApplicationController
   def update
     respond_to do |format|
       if @demande.update(demande_params)
-        format.html { redirect_to demande_url(@demande), notice: "Demande was successfully updated." }
+        format.html { redirect_to demande_url(@demande), notice: "Demande modifiée." }
         format.json { render :show, status: :ok, location: @demande }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +65,7 @@ class DemandesController < ApplicationController
     @demande.destroy
 
     respond_to do |format|
-      format.html { redirect_to demandes_url, notice: "Demande was successfully destroyed." }
+      format.html { redirect_to demandes_url, notice: "Demande supprimée." }
       format.json { head :no_content }
     end
   end
@@ -65,6 +78,6 @@ class DemandesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def demande_params
-      params.require(:demande).permit(:type_document, :nom, :prénom, :date_naissance, :lieu_naissance, :disctrict, :workflow_state)
+      params.require(:demande).permit(:type_document, :nom, :prénom, :date_naissance, :lieu_naissance, :district, :workflow_state, :document_aller, :document_retour)
     end
 end

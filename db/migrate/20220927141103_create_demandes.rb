@@ -6,7 +6,7 @@ class CreateDemandes < ActiveRecord::Migration[7.0]
       t.string :prénom
       t.date :date_naissance
       t.string :lieu_naissance
-      t.string :disctrict
+      t.string :district
       t.string :workflow_state
 
       t.timestamps

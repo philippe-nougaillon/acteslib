@@ -46,6 +46,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_decorator (1.4.0)
+      activesupport
     activejob (7.0.3.1)
       activesupport (= 7.0.3.1)
       globalid (>= 0.3.6)
@@ -194,12 +196,17 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    workflow (3.0.0)
+    workflow-activerecord (6.0.0)
+      activerecord (>= 6.0)
+      workflow (~> 3.0)
     zeitwerk (2.6.0)
 
 PLATFORMS
   x86_64-darwin-21
 
 DEPENDENCIES
+  active_decorator (~> 1.4)
   bootsnap
   debug
   devise
@@ -215,6 +222,8 @@ DEPENDENCIES
   turbo-rails
   tzinfo-data
   web-console
+  workflow
+  workflow-activerecord
 
 RUBY VERSION
    ruby 3.1.2p20

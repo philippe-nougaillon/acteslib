@@ -1,7 +1,7 @@
 <%= form_with(model: demande, class: "contents") do |form| %>
   <% if demande.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(demande.errors.count, "error") %> prohibited this demande from being saved:</h2>
+      <h2><%= pluralize(demande.errors.count, "erreurs") %> empêche(nt) la demande d'être enregistrée :</h2>
 
       <ul>
         <% demande.errors.each do |error| %>
@@ -13,40 +13,52 @@
 
   <div class="my-5">
     <%= form.label :type_document %>
-    <%= form.number_field :type_document, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.select :type_document, options_for_select(Demande.type_documents.keys, demande.type_document), {}, { class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" } %>
   </div>
 
   <div class="my-5">
     <%= form.label :nom %>
-    <%= form.text_field :nom, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :nom, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", required: true %>
   </div>
 
   <div class="my-5">
     <%= form.label :prénom %>
-    <%= form.text_field :prénom, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :prénom, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", required: true %>
   </div>
 
   <div class="my-5">
     <%= form.label :date_naissance %>
-    <%= form.date_field :date_naissance, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.date_field :date_naissance, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", required: true %>
   </div>
 
   <div class="my-5">
     <%= form.label :lieu_naissance %>
-    <%= form.text_field :lieu_naissance, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :lieu_naissance, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", required: true %>
   </div>
 
   <div class="my-5">
-    <%= form.label :disctrict %>
-    <%= form.text_field :disctrict, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :district %>
+    <%= form.text_field :district, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", required: true %>
   </div>
 
   <div class="my-5">
-    <%= form.label :workflow_state %>
-    <%= form.text_field :workflow_state, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :document_aller, "Preuve d'identité (CNI,Passeport,...) :" %>
+    <%= form.file_field :document_aller %>
   </div>
+
+
+  <% unless current_user.demandeur? %>
+    <%= form.file_field :document_retour %>
+  <% end %>
+
+  <% unless demande.new_record? %>
+    <div class="my-5">
+      <%= form.label :workflow_state %>
+      <%= form.select :workflow_state, Demande.workflow_spec.states.keys.to_a, {}, { class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" } %>
+    </div>
+  <% end %>
 
   <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit "Enregistrer la demande", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>

@@ -68,3 +68,10 @@ group :development do
 end
 
 gem 'devise'
+
+# Ruby finite-state-machine-inspired API for modeling workflow 
+gem 'workflow'
+gem 'workflow-activerecord'
+
+# ORM agnostic truly Object-Oriented view helper for Rails 4, 5, and 6
+gem "active_decorator", "~> 1.4"

@@ -16,7 +16,7 @@
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Date naissance:</strong>
-    <%= demande.date_naissance %>
+    <%= l demande.date_naissance %>
   </p>
 
   <p class="my-5">
@@ -25,18 +25,30 @@
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Disctrict:</strong>
-    <%= demande.disctrict %>
+    <strong class="block font-medium mb-1">district:</strong>
+    <%= demande.district %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Workflow state:</strong>
-    <%= demande.workflow_state %>
+    <strong class="block font-medium mb-1">Document ALLER:</strong>
+    <% if demande.document_aller.attached? %>
+      <%= image_tag demande.document_aller, width: '100%', height: '100%' %>
+    <% end %>
   </p>
 
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Document RETOUR:</strong>
+    <% if demande.document_retour.attached? %>
+      <%= image_tag demande.document_retour, width: '100%', height: '100%' %>
+    <% end %>
+  </p>
+
+  <strong class="block font-medium mb-1">Workflow state:</strong>
+  <span class="badge badge-<%= demande.style %>"><%= demande.workflow_state.humanize %></span>
+
   <% if action_name != "show" %>
-    <%= link_to "Show this demande", demande, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this demande', edit_demande_path(demande), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Voir la demande", demande, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Modifier la demande', edit_demande_path(demande), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
     <hr class="mt-6">
   <% end %>
 </div>

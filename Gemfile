@@ -79,3 +79,4 @@ gem "active_decorator", "~> 1.4"
 gem 'kaminari'
 
 gem "audited", "~> 5.0"
+gem "pundit", "~> 2.2"

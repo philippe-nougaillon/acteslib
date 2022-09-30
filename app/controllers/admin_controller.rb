@@ -1,4 +1,5 @@
 class AdminController < ApplicationController
+  before_action :is_user_authorized
   def index
     @demandes = Demande.all
 
@@ -20,5 +21,11 @@ class AdminController < ApplicationController
     end
 
     @demandes = @demandes.page(params[:page])
+  end
+
+  private
+
+  def is_user_authorized
+    authorize :admin
   end
 end

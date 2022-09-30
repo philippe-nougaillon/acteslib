@@ -12,6 +12,7 @@ class Demande < ApplicationRecord
   validates :type_document, :nom, :prénom, :date_naissance, :lieu_naissance, :district, :workflow_state, presence: true
 
   after_create :send_new_demande_notification_to_user
+  around_update :send_update_demande_notification_to_demandeur
 
   paginates_per 20
 
@@ -58,5 +59,9 @@ class Demande < ApplicationRecord
 
   def send_new_demande_notification_to_user
     DemandeMailer.with(demande: self).new_demande.deliver_now
+  end
+
+  def send_update_demande_notification_to_demandeur
+    DemandeMailer.with(demande: self).demande_updated.deliver_now
   end
 end

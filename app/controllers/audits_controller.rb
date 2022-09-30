@@ -1,4 +1,6 @@
 class AuditsController < ApplicationController
+  before_action :is_user_authorized
+
   def index
     # authorize :audit, :index?
 
@@ -24,6 +26,12 @@ class AuditsController < ApplicationController
     end
 
     @audits = @audits.page(params[:page]).per(20)
+  end
+
+  private
+
+  def is_user_authorized
+    authorize :audit
   end
 
 end

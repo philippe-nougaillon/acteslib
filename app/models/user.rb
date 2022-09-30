@@ -15,4 +15,8 @@ class User < ApplicationRecord
     institution: 2,
     administrateur: 3
   }
+
+  def role_number
+    User.roles[self.role]
+  end
 end

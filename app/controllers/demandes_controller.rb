@@ -1,5 +1,6 @@
 class DemandesController < ApplicationController
   before_action :set_demande, only: %i[ show edit update destroy ]
+  before_action :is_user_authorized
 
   # GET /demandes or /demandes.json
   def index
@@ -79,5 +80,9 @@ class DemandesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def demande_params
       params.require(:demande).permit(:type_document, :nom, :prénom, :date_naissance, :lieu_naissance, :district, :workflow_state, :document_aller, :document_retour)
+    end
+
+    def is_user_authorized
+      authorize Demande
     end
 end

@@ -6,6 +6,6 @@ class DemandeMailer < ApplicationMailer
 
   def demande_updated
     @demande = params[:demande]
-    mail(to: "p-edacquet@hotmail.fr, philippe.nougaillon@gmail.com", subject: 'Nouvelle demande')
+    mail(to: "p-edacquet@hotmail.fr, philippe.nougaillon@gmail.com", subject: 'Demande modifiée')
   end
 end

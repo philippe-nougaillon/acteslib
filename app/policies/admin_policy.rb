@@ -6,6 +6,6 @@ class AdminPolicy < ApplicationPolicy
   end
 
   def index?
-    @user && @user.administrateur?
+    @user && @user.role_number >= 1
   end
 end

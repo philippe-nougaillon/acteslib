@@ -13,6 +13,10 @@ class DemandePolicy < ApplicationPolicy
     index?
   end
 
+  def show_details?
+    @user && @user.role_number >= 1
+  end
+
   def create?
     index?
   end

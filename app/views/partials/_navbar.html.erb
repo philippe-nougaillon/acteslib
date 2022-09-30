@@ -1,16 +1,15 @@
 <div class="navbar sticky top-0 z-50 bg-base-300 sm:px-0 lg:px-20 mb-12">
   <div class="navbar-start">
+    
   </div>
   <% if user_signed_in? %>
     <div class="navbar-end flex-none">
-      <ul class="menu menu-horizontal p-0 sm:mr-3">
-        <li>
-          <%= link_to root_path do %>
-            <i class="fa-solid fa-triangle-exclamation"></i>
-            Mes demandes
-          <% end %>
-        </li>
-        <div class="dropdown dropdown-end mt-2">
+      <ul class="menu menu-horizontal items-center p-0 sm:mr-3">
+        <p class="mr-8">
+          <%= current_user.email %>
+          (<%= current_user.role %>)
+        </p>
+        <div class="dropdown dropdown-end">
           <div tabindex="0" class="avatar online placeholder cursor-pointer">
             <div class="bg-primary-focus text-neutral-content rounded-full w-8">
               <span><%= "#{current_user.email.first.humanize if current_user.email}" %></span>
@@ -20,8 +19,9 @@
             <li><p class="font-black"><%= current_user.email %></p></li>
             <hr>
             <% if current_user.administrateur? %>
+
               <li>
-                <%= link_to demandes_path, class:"w-full" do %>
+                <%= link_to admin_index_path, class:"w-full" do %>
                   <i class="fa-solid fa-cloud-arrow-down"></i>Demandes
                 <% end %>
               </li>

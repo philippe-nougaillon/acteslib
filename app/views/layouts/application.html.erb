@@ -12,16 +12,9 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <% if user_signed_in? %>
-        <%= link_to "Déconnexion", 
-                    destroy_user_session_path, 
-                    method: :delete, 
-                    class: "button is-danger is-outlined is-small",
-                    data: { turbo_method: :delete }
-                %>
-      <% end %>
-        <%= yield %>
+    <%= render partial: "partials/navbar" %>
+    <main class="container mx-auto px-2">
+      <%= yield %>
     </main>
   </body>
 </html>

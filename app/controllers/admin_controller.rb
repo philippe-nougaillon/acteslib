@@ -2,13 +2,21 @@ class AdminController < ApplicationController
   def index
     @demandes = Demande.all
 
-    unless params[:demande].blank?
-      s = "%#{params[:demande]}%"
-      @demandes = @demandes.where("demandes.type_document = ?", params[:demande])
+    unless params[:search].blank?
+      s = "%#{params[:search]}%"
+      @demandes = @demandes.where("demandes.nom ILIKE :search OR demandes.prénom ILIKE :search OR demandes.lieu_naissance ILIKE :search", {search: s})
     end
 
-    if (!params[:du].blank? && !params[:au].blank?)
-      @demandes = @demandes.where("DATE(demandes.created_at) BETWEEN ? AND ?", params[:du], params[:au])
+    unless params[:type_document].blank?
+      @demandes = @demandes.where("demandes.type_document = ?", params[:type_document])
+    end
+
+    unless params[:district].blank?
+      @demandes = @demandes.where("demandes.district = ?", params[:district])
+    end
+
+    unless params[:workflow_state].blank?
+      @demandes = @demandes.where("demandes.workflow_state = ?", params[:workflow_state])
     end
 
     @demandes = @demandes.page(params[:page])

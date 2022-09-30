@@ -1,4 +1,5 @@
 class Demande < ApplicationRecord
+  audited
   include Workflow
   include WorkflowActiverecord
 
@@ -11,6 +12,8 @@ class Demande < ApplicationRecord
   validates :type_document, :nom, :prénom, :date_naissance, :lieu_naissance, :district, :workflow_state, presence: true
 
   paginates_per 20
+
+  default_scope {order 'updated_at DESC'}
 
   # scope :publié, -> { where(workflow_state: PUBLIE )}
 

@@ -77,3 +77,5 @@ gem 'workflow-activerecord'
 gem "active_decorator", "~> 1.4"
 
 gem 'kaminari'
+
+gem "audited", "~> 5.0"

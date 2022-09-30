@@ -1,0 +1,70 @@
+<div class="navbar sticky top-0 z-50 bg-base-300 sm:px-0 lg:px-20 mb-12">
+  <div class="navbar-start">
+  </div>
+  <% if user_signed_in? %>
+    <div class="navbar-end flex-none">
+      <ul class="menu menu-horizontal p-0 sm:mr-3">
+        <li>
+          <%= link_to root_path do %>
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            Mes demandes
+          <% end %>
+        </li>
+        <div class="dropdown dropdown-end mt-2">
+          <div tabindex="0" class="avatar online placeholder cursor-pointer">
+            <div class="bg-primary-focus text-neutral-content rounded-full w-8">
+              <span><%= "#{current_user.email.first.humanize if current_user.email}" %></span>
+            </div>
+          </div>
+          <ul tabindex="0" class="menu dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-fit">
+            <li><p class="font-black"><%= current_user.email %></p></li>
+            <hr>
+            <% if current_user.administrateur? %>
+              <li>
+                <%= link_to demandes_path, class:"w-full" do %>
+                  <i class="fa-solid fa-cloud-arrow-down"></i>Demandes
+                <% end %>
+              </li>
+              <li>
+                <%= link_to users_path, class:"w-full" do %>
+                  <i class="fa-solid fa-users"></i>Utilisateurs
+                <% end %>
+              </li>
+              <li>
+                <%= link_to audits_path, class:"w-full" do %>
+                  <i class="fa-solid fa-search"></i>Audit trail
+                <% end %>
+              </li>
+            <% end %>
+            <hr>
+            <li data-turbo="false">
+              <%= button_to destroy_user_session_path, method: :delete, form_class:'w-full' do %>
+                <i class="fa-solid fa-right-from-bracket ml-1 mr-1"></i>
+                Déconnexion
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </ul>
+    </div>
+  <% else %>
+    <div class="navbar-end sm:mr-3">
+      <ul class="menu menu-horizontal p-0">
+        <div class="dropdown dropdown-end mt-2">
+          <div tabindex="0" class="avatar offline placeholder cursor-pointer">
+            <div class="bg-primary-focus text-neutral-content rounded-full w-8">
+              <i class="fa-solid fa-user text-white"></i>
+            </div>
+          </div>
+          <ul tabindex="0" class="menu dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-fit">
+            <li>
+              <%= link_to new_user_session_path do %>
+                <i class="fa-solid fa-right-to-bracket"></i> Connexion
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </ul>
+    </div>
+  <% end %>
+</div>

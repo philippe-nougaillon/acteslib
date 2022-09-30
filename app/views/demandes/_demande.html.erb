@@ -32,19 +32,26 @@
   <p class="my-5">
     <strong class="block font-medium mb-1">Document ALLER:</strong>
     <% if demande.document_aller.attached? %>
-      <%= image_tag demande.document_aller, width: '100%', height: '100%' %>
+      <%= image_tag demande.document_aller, width: '50%', height: '50%' %>
     <% end %>
   </p>
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Document RETOUR:</strong>
     <% if demande.document_retour.attached? %>
-      <%= image_tag demande.document_retour, width: '100%', height: '100%' %>
+      <%= image_tag demande.document_retour, width: '50%', height: '50%' %>
     <% end %>
   </p>
 
-  <strong class="block font-medium mb-1">Workflow state:</strong>
-  <span class="badge badge-<%= demande.style %>"><%= demande.workflow_state.humanize %></span>
+  <p class="my-5">
+    <strong class="font-medium mb-1">Workflow state:</strong>
+    <span class="badge badge-<%= demande.style %>"><%= demande.workflow_state.humanize %></span>
+  </p>
+
+  <p class="my-5">
+    <strong class="font-medium mb-1">Demandé créée : </strong>
+    il y a <%= time_ago_in_words demande.created_at %>
+  </p>
 
   <% if action_name != "show" %>
     <%= link_to "Voir la demande", demande, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>

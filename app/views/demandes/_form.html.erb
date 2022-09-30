@@ -38,7 +38,7 @@
 
   <div class="my-5">
     <%= form.label :district %>
-    <%= form.text_field :district, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", required: true %>
+    <%= form.select :district, options_for_select(demande.districts, demande.district), {}, { class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", include_blank: true, required: true } %>
   </div>
 
   <div class="my-5">
@@ -48,7 +48,10 @@
 
 
   <% unless current_user.demandeur? %>
-    <%= form.file_field :document_retour %>
+    <div class="my-5">
+      <%= form.label :document_retour, "Document retour :" %>
+      <%= form.file_field :document_retour %>
+    </div>
   <% end %>
 
   <% unless demande.new_record? %>

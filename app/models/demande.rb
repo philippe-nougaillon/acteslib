@@ -11,6 +11,8 @@ class Demande < ApplicationRecord
 
   validates :type_document, :nom, :prénom, :date_naissance, :lieu_naissance, :district, :workflow_state, presence: true
 
+  after_create :send_new_demande_notification_to_user
+
   paginates_per 20
 
   default_scope {order 'updated_at DESC'}
@@ -50,5 +52,11 @@ class Demande < ApplicationRecord
   def persist_workflow_state(new_value)
     self[:workflow_state] = new_value
     save!
+  end
+
+  private
+
+  def send_new_demande_notification_to_user
+    DemandeMailer.with(demande: self).new_demande.deliver_now
   end
 end

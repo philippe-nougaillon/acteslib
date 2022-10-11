@@ -80,3 +80,5 @@ gem 'kaminari'
 
 gem "audited", "~> 5.0"
 gem "pundit", "~> 2.2"
+
+gem "aws-sdk-s3", require: false

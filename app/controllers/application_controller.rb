@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
 
   def user_not_authorized
     flash[:alert] = "Vous n'êtes pas autorisé à effectuer cette action. Veuillez vous connecter."
-    redirect_back(fallback_location: new_user_session_path)
+    redirect_back(fallback_location: root_path)
   end
 end

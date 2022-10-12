@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if current_user.role == "demandeur"
-      demandes_path
+      pages_welcome_path
     else
       admin_index_path
     end

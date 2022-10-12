@@ -1,72 +1,76 @@
-<div id="<%= dom_id demande %>">
+<div id="<%= dom_id demande %>" class="card bg-base-100 shadow-xl p-4 mb-6">
+  <%= render partial: "partials/steps", locals: { step: demande.step } %>
   <div class="grid grid-cols-4 gap-x-10">
     <div>
       <p class="my-5">
-        <strong class="font-medium mb-1">ID :</strong>
-        <%= demande.id %>
-      </p>
-
-      <p class="my-5">
-        <strong class="font-medium mb-1">Demandé créée :</strong>
-        il y a <%= time_ago_in_words demande.created_at %>
-      </p>
-
-      <p class="my-5">
-        <strong class="font-medium mb-1">État de la demande:</strong>
+        <strong class="font-medium mb-1">État de la demande : </strong>
         <span class="badge badge-<%= demande.style %>"><%= demande.workflow_state.humanize %></span>
       </p>
 
+      <% unless current_user.demandeur? %>
+        <p class="my-5">
+          <strong class="font-medium mb-1">ID</strong>
+          <%= demande.id %>
+        </p>
+      <% end %>
+
       <p class="my-5">
-        <strong class="block font-medium mb-1">Type document :</strong>
+        <strong class="font-medium mb-1">Demandé créée : </strong>
+        il y a <%= time_ago_in_words demande.created_at %>
+      </p>
+
+
+      <p class="my-5">
+        <strong class="block font-medium mb-1">Type de document demandé</strong>
         <%= demande.type_document %>
       </p>
 
       <p class="my-5">
-        <strong class="block font-medium mb-1">Nom :</strong>
+        <strong class="block font-medium mb-1">Nom</strong>
         <%= demande.nom %>
       </p>
 
       <p class="my-5">
-        <strong class="block font-medium mb-1">Prénom :</strong>
+        <strong class="block font-medium mb-1">Prénom</strong>
         <%= demande.prénom %>
       </p>
 
       <p class="my-5">
-        <strong class="block font-medium mb-1">Email :</strong>
+        <strong class="block font-medium mb-1">Email</strong>
         <%= demande.user.email %>
       </p>
     </div>
 
     <div>
       <p class="my-5">
-        <strong class="block font-medium mb-1">Date naissance :</strong>
+        <strong class="block font-medium mb-1">Date naissance</strong>
         <%= l demande.date_naissance.to_date if demande.date_naissance %>
       </p>
 
       <p class="my-5">
-        <strong class="block font-medium mb-1">Lieu naissance :</strong>
+        <strong class="block font-medium mb-1">Lieu naissance</strong>
         <%= demande.lieu_naissance %>
       </p>
 
       <p class="my-5">
-        <strong class="block font-medium mb-1">Commune / Sous-Préfecture :</strong>
+        <strong class="block font-medium mb-1">Commune / Sous-Préfecture</strong>
         <%= demande.commune_sous_prefecture %>
       </p>
 
       <p class="my-5">
-        <strong class="block font-medium mb-1">District :</strong>
+        <strong class="block font-medium mb-1">District</strong>
         <%= demande.district %>
       </p>
 
       <p class="my-5">
-        <strong class="block font-medium mb-1">Numéro de Registre :</strong>
+        <strong class="block font-medium mb-1">Numéro de Registre</strong>
         <%= demande.number %>
       </p>
     </div>
 
     <div>
       <p class="my-5">
-        <strong class="block font-medium mb-1">Document ALLER :</strong>
+        <strong class="block font-medium mb-1">Document ALLER</strong>
         <% if demande.document_aller.attached? %>
           <%= image_tag demande.document_aller, width: '100%', height: '100%' %>
         <% end %>
@@ -75,7 +79,7 @@
 
     <div>
       <p class="my-5">
-        <strong class="block font-medium mb-1">Document RETOUR :</strong>
+        <strong class="block font-medium mb-1">Document RETOUR</strong>
         <% if demande.document_retour.attached? %>
           <%= link_to url_for(demande.document_retour) do %>
             <%= image_tag demande.document_retour, width: '100%', height: '100%' %>
@@ -90,5 +94,4 @@
     <%= link_to "Voir la demande", demande, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to 'Modifier la demande', edit_demande_path(demande), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
   <% end %>
-  <hr class="mt-6">
 </div>

@@ -13,6 +13,17 @@ module DemandeDecorator
     end
   end
 
+  def step
+    case self.workflow_state
+    when "nouvelle"
+      2
+    when "attente"
+      3
+    else
+      4
+    end
+  end
+
   def districts
     ['Abidjan', 'Bas-Sassandra', 'Comoé', 'Denguélé', 'Gôh-Djiboua', 'Lacs', 'Lagunes', 'Montagnes', 'Sassandra-Marahoué', 'Savanes', 'Vallée du Bandama', 'Woroba', 'Yamoussoukro', 'Zanzan']
   end

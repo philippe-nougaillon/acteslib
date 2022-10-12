@@ -1,6 +1,6 @@
 <ul class="steps steps-vertical lg:steps-horizontal w-full mb-8">
-  <li class="step step-primary">Inscription</li>
-  <li class="step">Demande</li>
-  <li class="step">Traitement</li>
-  <li class="step">Réception</li>
+  <li class="step <%= step >= 1 ? 'step-primary' : ''%>">Inscription</li>
+  <li class="step <%= step >= 2 ? 'step-primary' : ''%>">Demande</li>
+  <li class="step <%= step >= 3 ? 'step-primary' : ''%>">Traitement</li>
+  <li class="step <%= step == 4 ? 'step-primary' : ''%>">Réception</li>
 </ul>

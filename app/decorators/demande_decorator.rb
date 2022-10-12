@@ -5,11 +5,11 @@ module DemandeDecorator
     self.current_state.meta[:style]
   end
 
-  def commune_sous_prefecture
+  def commune_sous_préfecture
     unless self.commune.blank?
       self.commune
     else
-      self.sous_prefecture
+      self.sous_préfecture
     end
   end
 

@@ -84,7 +84,7 @@ class DemandesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def demande_params
-      params.require(:demande).permit(:type_document, :nom, :prénom, :date_naissance, :lieu_naissance, :district, :workflow_state, :document_aller, :document_retour, :number, :sous_prefecture, :commune)
+      params.require(:demande).permit(:type_document, :nom, :prénom, :date_naissance, :lieu_naissance, :district, :workflow_state, :document_aller, :document_retour, :sous_préfecture, :commune, :numéro_registre, :date_registre)
     end
 
     def is_user_authorized

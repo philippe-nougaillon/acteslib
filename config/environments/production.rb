@@ -102,4 +102,7 @@ Rails.application.configure do
   ActionMailer::Base.delivery_method = :smtp
 
   config.action_mailer.default_url_options = { host: 'acteslib.herokuapp.com', protocol: 'https' }
+
+  # pour fixer Psych::DisallowedClass (Tried to load unspecified class: Date):
+  config.active_record.use_yaml_unsafe_load = true
 end

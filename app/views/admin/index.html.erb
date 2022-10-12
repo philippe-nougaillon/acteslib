@@ -39,18 +39,18 @@
     </div>
 
     <div class="mr-4">
-      <%= label_tag :commune, "Commune", class: "label" %>
-      <%= select_tag :commune, 
-                      options_for_select(@communes, params[:commune]), 
+      <%= label_tag :sous_préfecture, "Sous-Préfecture", class: "label" %>
+      <%= select_tag :sous_préfecture, 
+                      options_for_select(@sous_préfectures, params[:sous_préfecture]), 
                       include_blank: true,
                       class: 'select select-bordered w-full max-w-xs', 
                       onchange: 'this.form.submit()' %>
     </div>
 
     <div class="mr-4">
-      <%= label_tag :sous_prefecture, "Sous-Préfecture", class: "label" %>
-      <%= select_tag :sous_prefecture, 
-                      options_for_select(@sous_prefectures, params[:sous_prefecture]), 
+      <%= label_tag :commune, "Commune", class: "label" %>
+      <%= select_tag :commune, 
+                      options_for_select(@communes, params[:commune]), 
                       include_blank: true,
                       class: 'select select-bordered w-full max-w-xs', 
                       onchange: 'this.form.submit()' %>
@@ -76,7 +76,7 @@
           <th>Document</th>
           <th>Nom</th>
           <th>District</th>
-          <th>Commune/Sous-Préf.</th>
+          <th>Sous-Préf/Commune</th>
           <th>État</th>
           <th>MÀJ</th>
         </tr>
@@ -110,7 +110,7 @@
 
             <td>
               <p>
-                <%= demande.commune_sous_prefecture %>
+                <%= demande.commune_sous_préfecture %>
               </p>
             </td>
 

@@ -12,7 +12,7 @@
       <ul class="menu menu-horizontal items-center p-0 sm:mr-3">
         <p class="mr-8">
           <%= current_user.email %>
-          (<%= current_user.role %>)
+          (<%= current_user.role.humanize %>)
         </p>
         <div class="dropdown dropdown-end">
           <div tabindex="0" class="avatar online placeholder cursor-pointer">

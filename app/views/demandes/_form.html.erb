@@ -38,7 +38,7 @@
   <div class="flex gap-x-4">
     <div class="w-full my-5">
       <%= form.label :date_naissance, "Date de naissance" %>
-      <%= form.text_field :date_naissance, type: "date", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      <%= form.date_field :date_naissance, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", required: true %>
     </div>
 
     <div class="w-full my-5">
@@ -49,8 +49,8 @@
 
   <div class="flex gap-x-4">
     <div class="w-full my-5">
-      <%= form.label :sous_prefecture, "Sous-Préfecture" %>
-      <%= form.text_field :sous_prefecture, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      <%= form.label :sous_préfecture, "Sous-Préfecture" %>
+      <%= form.text_field :sous_préfecture, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
     </div>
 
     <div class="w-full my-5">
@@ -60,9 +60,14 @@
   </div>
 
   <div class="flex gap-x-4">
-    <div class="w-1/2 my-5">
-      <%= form.label :number, "Numéro de Registre" %>
-      <%= form.number_field :number, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <div class="w-full my-5">
+      <%= form.label :numéro_registre, "Numéro de Registre" %>
+      <%= form.number_field :numéro_registre, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
+
+    <div class="w-full my-5">
+      <%= form.label :date_registre, "Date de Registre" %>
+      <%= form.date_field :date_registre, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
     </div>
   </div>
 

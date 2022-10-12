@@ -4,7 +4,7 @@ class AdminController < ApplicationController
     @demandes = Demande.all
     @districts = Demande.pluck(:district).uniq.sort
     @communes = Demande.pluck(:commune).compact_blank.uniq.sort
-    @sous_prefectures = Demande.pluck(:sous_prefecture).compact_blank.uniq.sort
+    @sous_préfectures = Demande.pluck(:sous_préfecture).compact_blank.uniq.sort
 
     unless params[:search].blank?
       s = "%#{params[:search]}%"
@@ -18,15 +18,15 @@ class AdminController < ApplicationController
     unless params[:district].blank?
       @demandes = @demandes.where("demandes.district = ?", params[:district])
       @communes = Demande.where(district: params[:district]).pluck(:commune).compact_blank.uniq.sort
-      @sous_prefectures = Demande.where(district: params[:district]).pluck(:sous_prefecture).compact_blank.uniq.sort
+      @sous_préfectures = Demande.where(district: params[:district]).pluck(:sous_préfecture).compact_blank.uniq.sort
     end
 
     unless params[:commune].blank?
       @demandes = @demandes.where("demandes.commune = ?", params[:commune])
     end
 
-    unless params[:sous_prefecture].blank?
-      @demandes = @demandes.where("demandes.sous_prefecture = ?", params[:sous_prefecture])
+    unless params[:sous_préfecture].blank?
+      @demandes = @demandes.where("demandes.sous_préfecture = ?", params[:sous_préfecture])
     end
 
     unless params[:workflow_state].blank?

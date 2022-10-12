@@ -71,7 +71,7 @@ class DemandesController < ApplicationController
     @demande.destroy
 
     respond_to do |format|
-      format.html { redirect_to demandes_url, notice: "Demande supprimée." }
+      format.html { redirect_to admin_index_path, notice: "Demande supprimée." }
       format.json { head :no_content }
     end
   end

@@ -1,15 +1,19 @@
 Rails.application.routes.draw do
-  get 'pages/welcome'
-  get 'admin/index'
-  devise_for :users
+
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
+
   resources :users
+  resources :audits
   resources :demandes, param: :slug do
     member do
       get :download
     end
   end
-  resources :audits
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  root "demandes#index"
+  get 'pages/welcome'
+  get 'admin/index'
+
+  root 'demandes#index'
 end

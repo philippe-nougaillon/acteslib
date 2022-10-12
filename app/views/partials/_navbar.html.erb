@@ -1,7 +1,8 @@
-<div class="navbar sticky top-0 z-50 bg-base-300 sm:px-0 lg:px-20 mb-12">
+<div class="navbar sticky top-0 z-50 bg-base-300 lg:px-4 mb-12">
   <div class="navbar-start">
+    <a class="normal-case font-bold">Acteslib</a>
     <% if user_signed_in? && current_user.administrateur? %>
-      <%= link_to admin_index_path, class:"btn btn-ghost" do %>
+      <%= link_to admin_index_path, class:"btn btn-ghost normal-case" do %>
         Demandes
       <% end %>
     <% end %>

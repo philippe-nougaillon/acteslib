@@ -3,6 +3,10 @@ class Demande < ApplicationRecord
   include Workflow
   include WorkflowActiverecord
 
+  extend FriendlyId
+  friendly_id :slug_candidates, use: :slugged
+
+
   has_one_attached :document_aller
   has_one_attached :document_retour
   belongs_to :user
@@ -63,5 +67,10 @@ class Demande < ApplicationRecord
 
   def send_update_demande_notification_to_demandeur
     DemandeMailer.with(demande: self).demande_updated.deliver_now
+  end
+
+  # only one candidate for an nice id; one random UDID
+  def slug_candidates
+    [SecureRandom.uuid]
   end
 end

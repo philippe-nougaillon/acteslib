@@ -82,3 +82,5 @@ gem "audited", "~> 5.0"
 gem "pundit", "~> 2.2"
 
 gem "aws-sdk-s3", require: false
+
+gem 'friendly_id', '~> 5.4.0'

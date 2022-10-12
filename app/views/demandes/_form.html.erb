@@ -82,7 +82,7 @@
   <% unless demande.new_record? %>
     <div class="my-5">
       <%= form.label :workflow_state, "État de la demande" %>
-      <%= form.select :workflow_state, Demande.workflow_spec.states.keys.to_a, {}, { class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" } %>
+      <%= form.select :workflow_state, options_for_select(Demande.workflow_spec.states.keys.to_a, demande.workflow_state), {}, { class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2" } %>
     </div>
   <% end %>
 

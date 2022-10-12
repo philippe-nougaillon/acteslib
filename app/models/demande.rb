@@ -24,11 +24,11 @@ class Demande < ApplicationRecord
   NOUVELLE = 'nouvelle'
   ATTENTE  = 'attente'
   TRAITEE  = 'traitée'
-  ECHEC    = 'échec'
+  ECHEC    = 'echec'
   ARCHIVEE = 'archivée'
 
   workflow do
-    state NOUVELLE, meta: { style: 'primary' } do
+    state NOUVELLE, meta: { style: 'secondary' } do
       event :attente, transitions_to: ATTENTE
       event :traiter, transitions_to: TRAITEE
     end
@@ -46,7 +46,7 @@ class Demande < ApplicationRecord
       event :archiver, transitions_to: ARCHIVEE
     end
 
-    state ARCHIVEE, meta: { style: 'ghost' }
+    state ARCHIVEE, meta: { style: 'info' }
   end
 
   # pour que le changement se voit dans l'audit trail

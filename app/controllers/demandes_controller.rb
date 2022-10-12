@@ -1,5 +1,5 @@
 class DemandesController < ApplicationController
-  before_action :set_demande, only: %i[ show edit update destroy ]
+  before_action :set_demande, only: %i[ show edit update destroy download]
   before_action :is_user_authorized
 
   # GET /demandes or /demandes.json
@@ -21,6 +21,11 @@ class DemandesController < ApplicationController
 
   # GET /demandes/1 or /demandes/1.json
   def show
+  end
+
+  def download
+    doc = @demande.document_retour
+    send_data doc.download, filename: doc.filename.to_s, content_type: doc.content_type
   end
 
   # GET /demandes/new
@@ -79,7 +84,7 @@ class DemandesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def demande_params
-      params.require(:demande).permit(:type_document, :nom, :prénom, :date_naissance, :lieu_naissance, :district, :workflow_state, :document_aller, :document_retour)
+      params.require(:demande).permit(:type_document, :nom, :prénom, :date_naissance, :lieu_naissance, :district, :workflow_state, :document_aller, :document_retour, :number, :sous_prefecture, :commune)
     end
 
     def is_user_authorized

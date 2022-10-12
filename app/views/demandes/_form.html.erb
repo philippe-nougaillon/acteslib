@@ -47,6 +47,25 @@
     </div>
   </div>
 
+  <div class="flex gap-x-4">
+    <div class="w-full my-5">
+      <%= form.label :sous_prefecture, "Sous-Préfecture" %>
+      <%= form.text_field :sous_prefecture, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
+
+    <div class="w-full my-5">
+      <%= form.label :commune %>
+      <%= form.text_field :commune, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
+  </div>
+
+  <div class="flex gap-x-4">
+    <div class="w-1/2 my-5">
+      <%= form.label :number, "Numéro de Registre" %>
+      <%= form.number_field :number, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
+  </div>
+
   <div class="my-5">
     <%= form.label :document_aller, "Preuve d'identité (CNI,Passeport,...) :" %>
     <%= form.file_field :document_aller %>
@@ -56,13 +75,13 @@
   <% unless current_user.demandeur? %>
     <div class="my-5">
       <%= form.label :document_retour, "Document retour :" %>
-      <%= form.file_field :document_retour %>
+      <%= form.file_field :document_retour, accept: 'application/pdf' %>
     </div>
   <% end %>
 
   <% unless demande.new_record? %>
     <div class="my-5">
-      <%= form.label :workflow_state %>
+      <%= form.label :workflow_state, "État de la demande" %>
       <%= form.select :workflow_state, Demande.workflow_spec.states.keys.to_a, {}, { class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" } %>
     </div>
   <% end %>

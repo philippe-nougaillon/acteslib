@@ -2,9 +2,9 @@
 
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl text-primary mt-1 mb-4">
-      Demandes
+      Liste des demandes
     </h1>
-    <%= link_to 'Nouvelle demande', new_demande_path, class: "btn btn-primary" %>
+    <%= link_to '+ Demande', new_demande_path, class: "btn btn-sm btn-primary btn-outline" %>
   </div>
 
   <%= form_tag admin_index_path, method: :get do %>
@@ -16,7 +16,8 @@
                       params[:search],
                       include_blank: true,
                       class: 'input select-bordered w-full max-w-xs',
-                      onchange: 'this.form.submit()' %>
+                      onchange: 'this.form.submit()',
+                      placeholder: 'Nom/Prénom/Lieu de naissance' %>
     </div>
 
     <div class="mr-4">
@@ -31,14 +32,32 @@
     <div class="mr-4">
       <%= label_tag :district, "District", class: "label" %>
       <%= select_tag :district, 
-                      options_for_select(Demande.pluck(:district).uniq.sort, params[:district]), 
+                      options_for_select(@districts, params[:district]), 
                       include_blank: true,
                       class: 'select select-bordered w-full max-w-xs', 
                       onchange: 'this.form.submit()' %>
     </div>
 
     <div class="mr-4">
-      <%= label_tag :workflow_state, "État", class: "label" %>
+      <%= label_tag :commune, "Commune", class: "label" %>
+      <%= select_tag :commune, 
+                      options_for_select(@communes, params[:commune]), 
+                      include_blank: true,
+                      class: 'select select-bordered w-full max-w-xs', 
+                      onchange: 'this.form.submit()' %>
+    </div>
+
+    <div class="mr-4">
+      <%= label_tag :sous_prefecture, "Sous-Préfecture", class: "label" %>
+      <%= select_tag :sous_prefecture, 
+                      options_for_select(@sous_prefectures, params[:sous_prefecture]), 
+                      include_blank: true,
+                      class: 'select select-bordered w-full max-w-xs', 
+                      onchange: 'this.form.submit()' %>
+    </div>
+
+    <div class="mr-4">
+      <%= label_tag :workflow_state, "État de la demande", class: "label" %>
       <%= select_tag :workflow_state, 
                       options_for_select(Demande.workflow_spec.states.keys.to_a, params[:workflow_state]), 
                       include_blank: true,
@@ -54,11 +73,11 @@
       <thead>
         <tr>
           <th>ID</th>
+          <th>Document</th>
           <th>Nom</th>
-          <th>Date de naissance</th>
           <th>District</th>
+          <th>Commune/Sous-Préf.</th>
           <th>État</th>
-          <th>Demandeur</th>
           <th>MÀJ</th>
         </tr>
       </thead>
@@ -73,13 +92,13 @@
 
             <td>
               <p>
-                <%= link_to demande.nom, demande, class: 'link' %>
+                <%= demande.type_document %>
               </p>
             </td>
 
             <td>
               <p>
-                <%= demande.date_naissance %>
+                <%= link_to demande.nom, demande, class: 'link' %>
               </p>
             </td>
 
@@ -91,13 +110,13 @@
 
             <td>
               <p>
-                <span class="badge badge-<%= demande.style %>"><%= demande.workflow_state.humanize %></span>
+                <%= demande.commune_sous_prefecture %>
               </p>
             </td>
 
             <td>
               <p>
-                <%= demande.user.email %>
+                <span class="badge badge-<%= demande.style %>"><%= demande.workflow_state.humanize %></span>
               </p>
             </td>
 
@@ -109,6 +128,11 @@
           </tr>
         <% end %>
       </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="7"></td>
+        </tr>
+      </tfoot>
     </table>
   </div>
 

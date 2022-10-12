@@ -13,8 +13,16 @@
 
   <body>
     <%= render partial: "partials/navbar" %>
-    <main class="container mx-auto px-2">
+    <main class="container mx-auto px-2 mb-8">
       <%= yield %>
+      <div style="display: none">
+        <!-- sert à charger les classes, sinon les couleurs ne s'affichent pas -->
+        <p class="badge-primary"></p>
+        <p class="badge-success"></p>
+        <p class="badge-warning"></p>
+        <p class="badge-error"></p>
+        <p class="badge-ghost"></p>
+      </div>
     </main>
   </body>
 </html>

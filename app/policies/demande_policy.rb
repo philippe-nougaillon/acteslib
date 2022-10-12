@@ -36,4 +36,8 @@ class DemandePolicy < ApplicationPolicy
   def destroy?
     @user && @user.administrateur?
   end
+
+  def download?
+    @user
+  end
 end

@@ -1,6 +1,10 @@
 <div class="navbar sticky top-0 z-50 bg-base-300 sm:px-0 lg:px-20 mb-12">
   <div class="navbar-start">
-    
+    <% if user_signed_in? && current_user.administrateur? %>
+      <%= link_to admin_index_path, class:"btn btn-ghost" do %>
+        Demandes
+      <% end %>
+    <% end %>
   </div>
   <% if user_signed_in? %>
     <div class="navbar-end flex-none">
@@ -19,20 +23,14 @@
             <li><p class="font-black"><%= current_user.email %></p></li>
             <hr>
             <% if current_user.administrateur? %>
-
-              <li>
-                <%= link_to admin_index_path, class:"w-full" do %>
-                  <i class="fa-solid fa-cloud-arrow-down"></i>Demandes
-                <% end %>
-              </li>
               <li>
                 <%= link_to users_path, class:"w-full" do %>
-                  <i class="fa-solid fa-users"></i>Utilisateurs
+                  Utilisateurs
                 <% end %>
               </li>
               <li>
                 <%= link_to audits_path, class:"w-full" do %>
-                  <i class="fa-solid fa-search"></i>Audit trail
+                  Audit trail
                 <% end %>
               </li>
             <% end %>

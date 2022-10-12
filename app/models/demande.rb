@@ -46,7 +46,7 @@ class Demande < ApplicationRecord
       event :archiver, transitions_to: ARCHIVEE
     end
 
-    state ARCHIVEE, meta: { style: '' }
+    state ARCHIVEE, meta: { style: 'ghost' }
   end
 
   # pour que le changement se voit dans l'audit trail

@@ -4,5 +4,5 @@
 
   <%= render "form", demande: @demande %>
 
-  <%= link_to 'Retour aux demandes', current_user.administrateur? ? admin_index_path : demandes_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <%= link_to 'Retour aux demandes', current_user.administrateur? ? admin_index_path : demandes_path, class: "sm:ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
 </div>

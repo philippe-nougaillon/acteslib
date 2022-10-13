@@ -1,5 +1,5 @@
 class DemandesController < ApplicationController
-  before_action :set_demande, only: %i[ show edit update destroy download]
+  before_action :set_demande, only: %i[ show edit update destroy download attente traiter echec archiver]
   before_action :is_user_authorized
 
   # GET /demandes or /demandes.json
@@ -74,6 +74,28 @@ class DemandesController < ApplicationController
       format.html { redirect_to admin_index_path, notice: "Demande supprimée." }
       format.json { head :no_content }
     end
+  end
+
+  # WORKFLOW
+
+  def attente
+    @demande.attente!
+    redirect_to admin_index_path, notice: "Demande mise en attente."
+  end
+
+  def traiter
+    @demande.traiter!
+    redirect_to admin_index_path, notice: "Demande traitée."
+  end
+
+  def echec
+    @demande.echec!
+    redirect_to admin_index_path, notice: "Demande mise en échec."
+  end
+
+  def archiver
+    @demande.archiver!
+    redirect_to admin_index_path, notice: "Demande archivée."
   end
 
   private

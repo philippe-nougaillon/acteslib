@@ -1,0 +1,5 @@
+<%= link_to label,
+      eval("#{transition}_demande_path(@demande)"), 
+      class: "btn btn-sm btn-" + Demande.workflow_spec.states[state.to_sym].meta[:style],
+      disabled: !@demande.send('can_' + transition + '?')
+%>

@@ -15,14 +15,8 @@
     <%= render partial: "partials/navbar" %>
     <main class="container mx-auto px-2 mb-8">
       <%= yield %>
-      <div style="display: none">
         <!-- sert à charger les classes, sinon les couleurs ne s'affichent pas -->
-        <p class="badge-info"></p>
-        <p class="badge-success"></p>
-        <p class="badge-warning"></p>
-        <p class="badge-error"></p>
-        <p class="badge-secondary"></p>
-      </div>
+        <p class="hidden badge-info badge-success badge-warning badge-error badge-secondary btn-info btn-success btn-warning btn-error btn-secondary"></p>
     </main>
     <%= render partial: "partials/notification" %>
   </body>

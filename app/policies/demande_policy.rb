@@ -40,4 +40,20 @@ class DemandePolicy < ApplicationPolicy
   def download?
     @user
   end
+
+  def attente?
+    @user && @user.role_number >= 1
+  end
+
+  def traiter?
+    attente?
+  end
+
+  def echec?
+    attente?
+  end
+
+  def archiver?
+    attente?
+  end
 end

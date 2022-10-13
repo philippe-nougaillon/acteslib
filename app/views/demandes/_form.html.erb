@@ -84,7 +84,7 @@
     </div>
   <% end %>
 
-  <% unless demande.new_record? %>
+  <% if current_user.administrateur? %>
     <div class="my-5">
       <%= form.label :workflow_state, "État de la demande" %>
       <%= form.select :workflow_state, options_for_select(Demande.workflow_spec.states.keys.to_a, demande.workflow_state), {}, { class: "block shadow rounded-md border border-gray-200 outline-none pl-3 pr-6 py-2 mt-2" } %>

@@ -35,6 +35,7 @@ class Demande < ApplicationRecord
     state NOUVELLE, meta: { style: 'secondary' } do
       event :attente, transitions_to: ATTENTE
       event :traiter, transitions_to: TRAITEE
+      event :echec, transitions_to: ECHEC
     end
 
     state ATTENTE, meta: { style: 'warning' } do

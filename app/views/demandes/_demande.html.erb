@@ -1,5 +1,7 @@
 <div id="<%= dom_id demande %>" class="card bg-base-100 shadow-xl p-4 mb-6">
-  <%= render partial: "partials/steps", locals: { step: demande.step } %>
+  <% if current_user.demandeur? %>
+    <%= render partial: "partials/steps", locals: { step: demande.step } %>
+  <% end %>
   <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-10">
     <div>
       <p class="my-5">

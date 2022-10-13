@@ -91,6 +91,11 @@
     </div>
   <% end %>
 
+  <div class="w-full my-5">
+      <%= form.label :observation %>
+      <%= form.text_area :observation, rows: 10, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    </div>
+
   <div class="inline">
     <%= form.submit "Enregistrer la demande", class: "btn btn-primary normal-case my-4" %>
   </div>

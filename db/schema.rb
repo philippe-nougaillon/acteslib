@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_12_144951) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_13_072409) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,6 +80,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_144951) do
     t.string "commune"
     t.string "slug"
     t.date "date_registre"
+    t.text "observation"
     t.index ["slug"], name: "index_demandes_on_slug", unique: true
     t.index ["user_id"], name: "index_demandes_on_user_id"
   end

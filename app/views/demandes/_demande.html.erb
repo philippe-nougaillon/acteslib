@@ -95,6 +95,11 @@
     </div>
   </div>
 
+  <p class="my-5">
+    <strong class="font-medium mb-1">Obersation : </strong>
+    <%= demande.observation %>
+  </p>
+
   <% if action_name != "show" && policy(Demande).show_details? %>
     <%= link_to "Voir la demande", demande, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to 'Modifier la demande', edit_demande_path(demande), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>

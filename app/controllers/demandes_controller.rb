@@ -44,7 +44,7 @@ class DemandesController < ApplicationController
 
     respond_to do |format|
       if @demande.save
-        format.html { redirect_to demande_url(@demande), notice: "Demande créée." }
+        format.html { redirect_to current_user.demandeur? ? pages_welcome_path : demande_url(@demande), notice: "Votre demande a bien été créée. Le service concerné va traiter votre demande." }
         format.json { render :show, status: :created, location: @demande }
       else
         format.html { render :new, status: :unprocessable_entity }

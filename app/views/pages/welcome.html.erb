@@ -1,10 +1,23 @@
 <div>
-  <div class="flex justify-between items-center mt-8">
-    <h1 class="font-bold text-4xl">Liste de mes demandes</h1>
-    <%= link_to 'Nouvelle demande', new_demande_path, class: "btn btn-primary" %>
-  </div>
+  <% if @demandes.any? %>
+    <div class="flex justify-between items-center mt-8">
+      <h1 class="font-bold text-4xl">Liste de mes demandes</h1>
+      <%= link_to 'Nouvelle demande', new_demande_path, class: "btn btn-primary" %>
+    </div>
 
-  <div id="demandes" class="min-w-full">
-    <%= render @demandes %>
-  </div>
+    <div id="demandes" class="min-w-full">
+      <%= render @demandes %>
+    </div>
+  <% else %>
+    <div class="hero  bg-base-200">
+      <div class="hero-content text-center">
+        <div class="max-w-md mb-24">
+          <%= render partial: "partials/steps", locals: { step: 2 } %>
+          <h1 class="text-5xl font-bold mt-24">Bienvenue</h1>
+          <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+          <%= link_to 'Nouvelle demande', new_demande_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>

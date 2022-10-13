@@ -15,9 +15,7 @@ module DemandeDecorator
 
   def step
     case self.workflow_state
-    when "nouvelle"
-      2
-    when "attente"
+    when "nouvelle", "attente"
       3
     else
       4

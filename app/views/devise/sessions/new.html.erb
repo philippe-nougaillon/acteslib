@@ -1,32 +1,42 @@
-<%= render partial: "partials/steps", locals: { step: 1 } %>
-<div class="flex flex-col justify-center aligns-items-center items-center">
-  <div class="p-16 border-2 rounded-xl">
-    <h1 class="text-4xl font-bold text-center">Connexion</h1>
-    <hr class="my-4">
+<div class="flex flex-wrap">
+  <div class="">
+    <h1 class="font-bold text-4xl">
+    <%= image_tag "undraw_file_searching_re_3evy.svg" %>
+  </div>
+  <div class="flex-1">
+    <div class="mt-8 sm:mt-0">
+      <%= render partial: "partials/steps", locals: { step: 1 } %>
+    </div>
+    <div class="flex flex-col justify-center aligns-items-center items-center mt-12">
+      <div class="p-16 border-2 rounded-xl">
+        <h1 class="text-4xl font-bold text-center">Connexion</h1>
+        <hr class="my-4">
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full" %>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :password %><br />
+            <%= f.password_field :password, autocomplete: "current-password", class: "w-full" %>
+          </div>
+
+          <% if devise_mapping.rememberable? %>
+            <div class="field">
+              <%= f.check_box :remember_me, class: "checkbox my-2" %>
+              <%= f.label :remember_me, "Se souvenir de moi" %>
+            </div>
+          <% end %>
+
+          <div class="actions">
+            <%= f.submit "Se connecter", class:"btn btn-primary btn-outline w-full" %>
+          </div>
+        <% end %>
+
+        <%= render "devise/shared/links" %>
       </div>
-
-      <div class="field">
-        <%= f.label :password %><br />
-        <%= f.password_field :password, autocomplete: "current-password", class: "w-full" %>
-      </div>
-
-      <% if devise_mapping.rememberable? %>
-        <div class="field">
-          <%= f.check_box :remember_me, class: "checkbox my-2" %>
-          <%= f.label :remember_me, "Se souvenir de moi" %>
-        </div>
-      <% end %>
-
-      <div class="actions">
-        <%= f.submit "Se connecter", class:"btn btn-primary btn-outline w-full" %>
-      </div>
-    <% end %>
-
-    <%= render "devise/shared/links" %>
+    </div>
   </div>
 </div>

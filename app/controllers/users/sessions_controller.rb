@@ -10,10 +10,14 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    if current_user.role == 'demandeur'
-      redirect_to pages_welcome_path, notice: 'Bienvenue'
+    if user_signed_in?
+      if current_user.role == 'demandeur'
+        redirect_to pages_welcome_path, notice: 'Bienvenue'
+      else
+        redirect_to admin_index_path, notice: 'Bienvenue ! Content de vous revoir...'
+      end
     else
-      redirect_to admin_index_path, notice: 'Bienvenue ! Content de vous revoir...'
+      redirect_to new_user_session_path, alert: "Identifiant et/ou mot de passe invalide"
     end
   end
 

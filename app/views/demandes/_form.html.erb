@@ -55,7 +55,7 @@
 
     <div class="w-full my-5">
       <%= form.label :commune %>
-      <%= form.text_field :commune, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      <%= form.select :commune, options_for_select(demande.communes_gôh_djiboua, demande.commune), {} ,class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
     </div>
   </div>
 
@@ -87,12 +87,12 @@
   <% unless demande.new_record? %>
     <div class="my-5">
       <%= form.label :workflow_state, "État de la demande" %>
-      <%= form.select :workflow_state, options_for_select(Demande.workflow_spec.states.keys.to_a, demande.workflow_state), {}, { class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2" } %>
+      <%= form.select :workflow_state, options_for_select(Demande.workflow_spec.states.keys.to_a, demande.workflow_state), {}, { class: "block shadow rounded-md border border-gray-200 outline-none pl-3 pr-6 py-2 mt-2" } %>
     </div>
   <% end %>
 
   <div class="w-full my-5">
-      <%= form.label :observation %>
+      <%= form.label :observation, "Votre message" %>
       <%= form.text_area :observation, rows: 10, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
     </div>
 

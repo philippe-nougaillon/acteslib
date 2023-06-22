@@ -100,10 +100,9 @@
     <%= demande.observation %>
   </p>
 
-
   <p class="my-5">
     <strong class="font-medium mb-1">État de la demande : </strong>
-    <span class="badge badge-<%= demande.style %>"><%= demande.workflow_state.humanize %></span>
+    <span class="badge badge-lg badge-<%= demande.style %>"><%= demande.workflow_state.humanize %></span>
   </p>
 
   <% if action_name != "show" && policy(Demande).show_details? %>

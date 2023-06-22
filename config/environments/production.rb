@@ -96,12 +96,12 @@ Rails.application.configure do
     :address        => ENV['MAILGUN_SMTP_SERVER'],
     :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
     :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-    :domain         => 'acteslib.herokuapp.com',
+    :domain         => 'acteslib-e867c6048135.herokuapp.com',
     :authentication => :plain,
   }
   ActionMailer::Base.delivery_method = :smtp
 
-  config.action_mailer.default_url_options = { host: 'acteslib.herokuapp.com', protocol: 'https' }
+  config.action_mailer.default_url_options = { host: 'acteslib-e867c6048135.herokuapp.com', protocol: 'https' }
 
   # pour fixer Psych::DisallowedClass (Tried to load unspecified class: Date):
   config.active_record.use_yaml_unsafe_load = true

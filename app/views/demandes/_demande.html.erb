@@ -1,14 +1,9 @@
-<div id="<%= dom_id demande %>" class="card bg-base-100 shadow-xl p-4 mb-6">
+<div id="<%= dom_id demande %>" class="card bg-base-100 shadow-md p-4 mb-6">
   <% if current_user.demandeur? %>
     <%= render partial: "partials/steps", locals: { step: demande.step } %>
   <% end %>
   <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-10">
     <div>
-      <p class="my-5">
-        <strong class="font-medium mb-1">État de la demande : </strong>
-        <span class="badge badge-<%= demande.style %>"><%= demande.workflow_state.humanize %></span>
-      </p>
-
       <% unless current_user.demandeur? %>
         <p class="my-5">
           <strong class="font-medium mb-1">ID : </strong>
@@ -41,6 +36,7 @@
         <strong class="block font-medium mb-1">Email</strong>
         <%= demande.user.email %>
       </p>
+      
     </div>
 
     <div>
@@ -102,6 +98,12 @@
   <p class="my-5">
     <strong class="font-medium mb-1">Message : </strong>
     <%= demande.observation %>
+  </p>
+
+
+  <p class="my-5">
+    <strong class="font-medium mb-1">État de la demande : </strong>
+    <span class="badge badge-<%= demande.style %>"><%= demande.workflow_state.humanize %></span>
   </p>
 
   <% if action_name != "show" && policy(Demande).show_details? %>

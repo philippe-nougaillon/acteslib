@@ -2,12 +2,13 @@
   <div class="mx-auto">
     <%= render @demande %>
 
-    Actions : 
-    <%= render partial: 'partials/wf_button', locals: { state: 'attente', transition: 'attente', label: 'Mettre en attente' } %>
-    <%= render partial: 'partials/wf_button', locals: { state: 'traitée', transition: 'traiter', label: 'A été traité' } %>
-    <%= render partial: 'partials/wf_button', locals: { state: 'echec', transition: 'echec', label: 'A échoué' } %>
-    <%= render partial: 'partials/wf_button', locals: { state: 'archivée', transition: 'archiver', label: 'Archiver' } %>
-    <br>
+    <p class="my-3">
+      Actions : 
+      <%= render partial: 'partials/wf_button', locals: { state: 'attente', transition: 'attente', label: 'Mettre en attente' } %>
+      <%= render partial: 'partials/wf_button', locals: { state: 'traitée', transition: 'traiter', label: 'A été traité' } %>
+      <%= render partial: 'partials/wf_button', locals: { state: 'echec', transition: 'echec', label: 'A échoué' } %>
+      <%= render partial: 'partials/wf_button', locals: { state: 'archivée', transition: 'archiver', label: 'Archiver' } %>
+    </p>
   
     <% unless current_user.demandeur? %>
       <%= link_to 'Modifier la demande', edit_demande_path(@demande), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>

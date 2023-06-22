@@ -2,7 +2,7 @@
   <% if current_user.demandeur? %>
     <%= render partial: "partials/steps", locals: { step: demande.step } %>
   <% end %>
-  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-10">
+  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-12">
     <div>
       <% unless current_user.demandeur? %>
         <p class="my-5">
@@ -28,11 +28,6 @@
       </p>
 
       <p class="my-5">
-        <strong class="block font-medium mb-1">Prénom</strong>
-        <%= demande.prénom %>
-      </p>
-
-      <p class="my-5">
         <strong class="block font-medium mb-1">Email</strong>
         <%= demande.user.email %>
       </p>
@@ -51,29 +46,20 @@
       </p>
 
       <p class="my-5">
-        <strong class="block font-medium mb-1">Commune / Sous-Préfecture</strong>
-        <%= demande.commune_sous_préfecture %>
-      </p>
-
-      <p class="my-5">
         <strong class="block font-medium mb-1">District</strong>
         <%= demande.district %>
       </p>
 
       <p class="my-5">
-        <strong class="block font-medium mb-1">Numéro de Registre</strong>
-        <%= demande.numéro_registre %>
+        <strong class="block font-medium mb-1">Prénom</strong>
+        <%= demande.prénom %>
       </p>
 
-      <p class="my-5">
-        <strong class="block font-medium mb-1">Date de Registre</strong>
-        <%= demande.date_registre %>
-      </p>
     </div>
 
     <div>
       <p class="my-5">
-        <strong class="block font-medium mb-1">Document ALLER</strong>
+        <strong class="block font-medium mb-1">Document IN</strong>
         <% if demande.document_aller.attached? %>
           <%= link_to url_for(demande.document_aller) do %>
             <%= image_tag demande.document_aller, width: '100%', height: '100%' %>
@@ -84,7 +70,7 @@
 
     <div>
       <p class="my-5">
-        <strong class="block font-medium mb-1">Document RETOUR</strong>
+        <strong class="block font-medium mb-1">Document OUT</strong>
         <% if demande.document_retour.attached? %>
           <%= link_to url_for(demande.document_retour) do %>
             <%= image_tag demande.document_retour, width: '100%', height: '100%' %>

@@ -1,12 +1,13 @@
 <div class="navbar sticky top-0 z-50 bg-base-300 lg:px-4 mb-12">
   <div class="navbar-start">
-    <a class="normal-case font-bold">Acteslib</a>
+    <a class="normal-case font-bold">ActesLib</a>
     <% if user_signed_in? && current_user.administrateur? %>
-      <%= link_to admin_index_path, class:"btn btn-ghost normal-case" do %>
+      <%= link_to admin_index_path, class:"btn btn-ghost normal-case ml-3" do %>
         Demandes
       <% end %>
     <% end %>
   </div>
+
   <% if user_signed_in? %>
     <div class="navbar-end flex-none">
       <ul class="menu menu-horizontal items-center p-0 sm:mr-3">

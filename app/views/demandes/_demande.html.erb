@@ -6,19 +6,19 @@
     <div>
       <% unless current_user.demandeur? %>
         <p class="my-5">
-          <strong class="font-medium mb-1">ID : </strong>
+          <strong class="font-medium mb-1">Demande N°</strong>
           <%= demande.id %>
+          <br><br>
         </p>
       <% end %>
 
       <p class="my-5">
-        <strong class="font-medium mb-1">Demandé créée : </strong>
+        <strong class="font-medium mb-1">Demandé créée </strong>
         il y a <%= time_ago_in_words demande.created_at %>
       </p>
 
-
       <p class="my-5">
-        <strong class="block font-medium mb-1">Type de document demandé</strong>
+        <strong class="block font-medium mb-1">Document demandé</strong>
         <%= demande.type_document %>
       </p>
 

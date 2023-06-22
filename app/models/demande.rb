@@ -15,8 +15,8 @@ class Demande < ApplicationRecord
 
   validates :type_document, :nom, :prénom, :date_naissance, :lieu_naissance, :district, :workflow_state, presence: true
 
-  after_create :send_new_demande_notification_to_user
-  before_update :send_update_demande_notification_to_demandeur, :if => proc { workflow_state_was && workflow_state_changed? }
+  #after_create :send_new_demande_notification_to_user
+  #before_update :send_update_demande_notification_to_demandeur, :if => proc { workflow_state_was && workflow_state_changed? }
 
   paginates_per 20
 

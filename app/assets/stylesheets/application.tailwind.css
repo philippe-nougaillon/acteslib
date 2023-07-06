@@ -2,12 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-
 @layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+  /* //// PAGINATION //// */
+
+  .prev, .next, .page, .last, .first{
+    @apply ml-2 rounded-lg py-1 px-2 bg-gray-100 inline-block font-medium hover:bg-sky-400
   }
 }
-
-*/
